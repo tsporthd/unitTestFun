@@ -3,6 +3,7 @@ package com.zillion.service;
 import com.zillion.domain.Account;
 import org.junit.Before;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.*;
 
@@ -60,6 +61,22 @@ public class AccountServiceImplTest {
         accountService.deleteAccount(account.getAccountName());
         account = accountService.findAccount(account.getId());
         assertNull(account);
+    }
+
+    @Test
+    public void testCreateWithMock(){
+        AccountService service = mock(AccountService.class);
+        String mockAccount = "MockAccount";
+        Account sampleAccount = new Account(mockAccount);
+
+        when(service.createAccount(mockAccount)).thenReturn(sampleAccount);
+
+        Account testAccount = service.createAccount(mockAccount);
+        assertNotNull(testAccount);
+        assertTrue(testAccount.getAccountName().equals(mockAccount));
+
+
+
     }
 
 }
