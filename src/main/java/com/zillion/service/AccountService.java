@@ -2,6 +2,7 @@ package com.zillion.service;
 
 import com.zillion.domain.Account;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -16,4 +17,6 @@ public interface AccountService {
 
     void deleteAccount(String accountName);
     void deleteAccount(UUID uuid);
+
+
 }
